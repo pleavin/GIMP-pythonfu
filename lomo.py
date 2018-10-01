@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+
+# Tutorial available at: https://www.youtube.com/watch?v=X0_a6U6PkCA
+# Feedback welcome: jacksonbates@hotmail.com
+# Adapted by Victoria Pleavin to reflect GIMP 2.10.X updates.
+
+from gimpfu import *
+
+
+def lomo(image, drawable):
+    num_points = 10
+    #Note: updated gimpfu scripts require array to be a FLOAT instead of an INT.
+    s_curve = [0.0, 0.0, 64.0, 96.0, 128.0, 128.0, 192.0, 160.0, 256.0, 256.0]
+    inverted_s_curve = [0.0, 0.0, 64.0, 96.0, 128.0, 128.0, 192.0, 160.0, 256.0, 256.0]
+    pdb.gimp_drawable_curves_spline(drawable, 1, num_points, s_curve)
+    pdb.gimp_drawable_curves_spline(drawable, 2, num_points, s_curve)
+    pdb.gimp_drawable_curves_spline(drawable, 3, num_points, inverted_s_curve)
+    #add new layer & Set to 'overlay'
+    opacity_100 = 100
+    # variables are (image, width, height, layer type, layer name, opacity, mode)
+    layer = pdb.gimp_layer_new(image, image.width, image.height, 0, "Overlay", opacity_100, 23)
+    layer_position = 0
+    pdb.gimp_image_insert_layer(image, layer, None, layer_position)
+    # blend arguments and call to function
+    blend_mode = 0
+    paint_mode = 0
+    gradient_type = 0
+    offset = 0
+    repeat = 0
+    reverse = False
+    supersample = False
+    max_depth = 1
+    threshold = 0
+    dither = True
+    x1 = layer.width
+    y1 = 0
+    x2 = layer.width / 2
+    y2 = layer.height / 2
+    pdb.gimp_edit_blend(layer, blend_mode, paint_mode, gradient_type, opacity_100, offset, repeat, reverse, supersample, max_depth, threshold,  dither, x1, y1, x2, y2)
+    #merge all layers
+    layer = pdb.gimp_image_merge_visible_layers(image, 0)
+    #pdb.gimp_displays_flush()
+
+
+
+register(
+    "python-fu-lomo23",
+    "Lomo effect",
+    "Creates a lomo effect on a given image",
+    "Victoria Pleavin", "Victoria Pleavin", "2018",
+    "Lomo",
+    "RGB", # type of image it works on (*, RGB, RGB*, RGBA etc...)
+    [
+        (PF_IMAGE, "image", "takes current image", None),
+        (PF_DRAWABLE, "drawable", "Input layer", None)
+    ],
+    [],
+    lomo, menu="<Image>/Filters")  # second item is menu location
+
+main()
