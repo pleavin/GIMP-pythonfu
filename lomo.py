@@ -10,8 +10,9 @@ from gimpfu import *
 def lomo(image, drawable):
     num_points = 10
     #Note: updated gimpfu scripts require array to be a FLOAT instead of an INT.
-    s_curve = [0.0, 0.0, 64.0, 96.0, 128.0, 128.0, 192.0, 160.0, 256.0, 256.0]
-    inverted_s_curve = [0.0, 0.0, 64.0, 96.0, 128.0, 128.0, 192.0, 160.0, 256.0, 256.0]
+    #Note: instead of matching the 256 x 256 coordinates in the histogram, it treats it like a scale of 0 to 1. Honestly, this is pretty non-intuitive change and should have been mentioned in the plugin notes.
+    s_curve = [0.0, 0.0, 0.25, 0.38, 0.5, 0.5, 0.75, 0.625, 1.0, 1.0]
+    inverted_s_curve =  [0.0, 0.0, 0.38, 0.25, 0.5, 0.5, 0.625, 0.75, 1.0, 1.0]
     pdb.gimp_drawable_curves_spline(drawable, 1, num_points, s_curve)
     pdb.gimp_drawable_curves_spline(drawable, 2, num_points, s_curve)
     pdb.gimp_drawable_curves_spline(drawable, 3, num_points, inverted_s_curve)
