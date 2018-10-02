@@ -10,7 +10,8 @@ from gimpfu import *
 def lomo(image, drawable):
     num_points = 10
     #Note: updated gimpfu scripts require array to be a FLOAT instead of an INT.
-    #Note: instead of matching the 256 x 256 coordinates in the histogram, it treats it like a scale of 0 to 1. Honestly, this is pretty non-intuitive change and should have been mentioned in the plugin notes.
+    #Note: instead of matching the 256 x 256 coordinates in the histogram, it treats it like a scale of 0 to 1. To make the conversion, find the place on the graph then divide the number by 256. 
+    #Salty opinion: this is a pretty non-intuitive change and should have been mentioned in the plugin notes.
     s_curve = [0.0, 0.0, 0.25, 0.38, 0.5, 0.5, 0.75, 0.625, 1.0, 1.0]
     inverted_s_curve =  [0.0, 0.0, 0.38, 0.25, 0.5, 0.5, 0.625, 0.75, 1.0, 1.0]
     pdb.gimp_drawable_curves_spline(drawable, 1, num_points, s_curve)
@@ -45,7 +46,7 @@ def lomo(image, drawable):
 
 
 register(
-    "python-fu-lomo23",
+    "python-fu-lomotute7",
     "Lomo effect",
     "Creates a lomo effect on a given image",
     "Victoria Pleavin", "Victoria Pleavin", "2018",
