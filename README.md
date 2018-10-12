@@ -13,10 +13,12 @@ The image object represents an open image.
 
 #### Example Image member:
 _image.active_layer_ is the active layer of the image. 
+
 _image.layers_ is a list of the layers of the image.
 
 #### Example Image Methods:
 _image.add_layer(layer, position)_ adds layer to image in the position defined.
+
 _image.resize(width, height, x, y)_ Resizes the image to size (width, height) and places the old contents at position (x,y).
 
 ### Other Objects
