@@ -1,7 +1,8 @@
-# GIMP-pythonfu
+# GIMP Pythonfu - Reminders and Resources
 
 The "full" gimp documentation here: https://www.gimp.org/docs/python/index.html
-It was last updated in 2006 - long before the 2.10.X update. 
+
+It was last updated in 2006 - long before the 2.10.X update. It is a good resource for covering the basics - but it likely will not tell you why certain plug-ins in the Python Procedure Browser aren't working as expected. 
 
 ## Objects
 
@@ -27,3 +28,6 @@ There are also "Channel" and "Layer" objects with their own members and methods.
 ## Gimpshelf Module
 To be explored in the future. Used for persistent storage while GIMP is open.
 
+## Missing and confusing parameters descriptions
+
+**Units** expects INT32 parameter, despite the units being described as strings in the GIMP interface. Presumably use the following:  { PIXELS (0), INCHES (1), etc.. }
