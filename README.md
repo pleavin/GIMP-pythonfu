@@ -35,3 +35,5 @@ To be explored in the future. Used for persistent storage while GIMP is open.
 **Units** expects INT32 parameter, despite the units being described as strings in the GIMP interface. Presumably use the following:  { PIXELS (0), INCHES (1), etc.. }
 
 **Finding x and y positions of a layer** the language used by gimp and pythonfu is "offsets", because you are looking for the numbers offset from the 0,0 base coordinate. Search for plugins using the keyword "offset" to find what you're looking for.
+
+**Position does not mean x and y at all**. The position refers to the order of the layers and the relative position of the layer in that order. 
