@@ -1,8 +1,8 @@
 # GIMP Pythonfu - Reminders and Resources
 
-~~The "full" gimp documentation here: https://www.gimp.org/docs/python/index.html
+~~The "full" gimp documentation here: https://www.gimp.org/docs/python/index.html~~
 
-~~It was last updated in 2006 - long before the 2.10.X update. It is a good resource for covering the basics - but it likely will not tell you why certain plug-ins in the Python Procedure Browser aren't working as expected. 
+~~It was last updated in 2006 - long before the 2.10.X update. It is a good resource for covering the basics - but it likely will not tell you why certain plug-ins in the Python Procedure Browser aren't working as expected. ~~
 
 Full gimp document here: https://developer.gimp.org/api/2.0/libgimp/index.html Up to date as of 2.8.X
 
